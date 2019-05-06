@@ -8,4 +8,7 @@ HttpClient
 export class SwapiService {
 
   constructor(private httpSvc:HttpClient) { }
+  getPlanets(){
+    return this.httpSvc.get("https:/swapi.co/api/planets")
+  }
 }
