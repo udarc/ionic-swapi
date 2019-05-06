@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { merge } from 'rxjs';
-HttpClient
+import { merge,race } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +16,8 @@ export class SwapiService {
     const p5 = this.httpSvc.get("https:/swapi.co/api/planets/?page=5");
     const p6 = this.httpSvc.get("https:/swapi.co/api/planets/?page=6");
     const p7 = this.httpSvc.get("https:/swapi.co/api/planets/?page=7");
-    return merge(p1,p2,p3,p4,p5,p6,p7)
+    // return merge(p1,p2,p3,p4,p5,p6,p7);
+    return race(p1,p2,p3,p4,p5,p6,p7)
 
   }
 }
