@@ -34,7 +34,17 @@ export class ListPage implements OnInit {
     // }
   }
 
+  //recursive function
+  private foo(stop : boolean =false){
+    console.log("foo");
+    if(!stop) {
+      this.foo(new Date().getSeconds() > 10 ? true : false);
+    }
+    
+  }
+
   ngOnInit() {
+   // this.foo();
     this.swapiSvc.getPlanets().subscribe(
       data =>{
         console.log(data);

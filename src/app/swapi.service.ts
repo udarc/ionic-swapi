@@ -22,7 +22,7 @@ export class SwapiService {
 
   return this.httpSvc.get("https:/swapi.co/api/planets").pipe(
     expand(data =>
-      data.next ? this.httpSvc.get(data.next) : empty()
+      (<any>data).next? this.httpSvc.get((<any> data).next) : empty()
     ));
 
     }
